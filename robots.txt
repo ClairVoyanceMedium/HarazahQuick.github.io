@@ -1,42 +1,283 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
+# robots.txt גרסה 3.5 - 2025-05-28
+# מותאם עבור https://clairvoyancemedium.github.io/HarazahQuick.github.io/
+# מטרות: קידום אתרים גלובלי, סריקה תדירה, תמיכה בבינה מלאכותית/עוזרים קוליים/רשתות חברתיות, רב-לשוניות, הגנה מקסימלית
+
+# --- הנחיות כלליות לכל הסורקים הלגיטימיים ---
 User-agent: *
-Disallow: /admin/
-Disallow: /tmp/
-Disallow: /private/
+Allow: /
+Allow: /[a-z]{2}/  # דפים רב-לשוניים (/he/, /en/, /es/, וכו')
+Allow: /terms/     # תנאי שימוש ציבוריים
+Allow: /fonts/     # פונטים עבור תצוגה
+Allow: /images/    # תמונות לאינדוקס
+Allow: /js/        # סקריפטים אינטראקטיביים
+Allow: /css/       # CSS מותאם מובייל
+Allow: /*.webp$    # תמונות WebP
+Allow: /*.jpg$     # תמונות JPG
+Allow: /*.png$     # תמונות PNG
+Allow: /*.gif$     # תמונות GIF
+Allow: /*.js$      # סקריפטים JavaScript
+Allow: /*.css$     # קבצי CSS
+Disallow: /csp-report-endpoint/  # הגנה על CSP
+Disallow: /contact/             # עמוד יצירת קשר
+Disallow: /privacy/             # מדיניות פרטיות
+Disallow: /checkout/            # מסלולי תשלום
+Disallow: /search/              # עמודי חיפוש
+Disallow: /api/                 # נקודות קצה API
+Disallow: /test/                # תיקיות בדיקה
+Disallow: /staging/             # סביבות פיתוח
+Clean-param: utm_source&utm_medium&utm_campaign&lang&session_id  # לאפשר פרמטרים שימושיים
 
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
-
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+# --- הנחיות עבור Googlebot (Google, Google Assistant) ---
 User-agent: Googlebot
+Crawl-delay: 1
+Allow: /blog/      # תוכן עשיר לקידום אתרים
+Allow: /article/   # מאמרים לתצוגה בתוצאות
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור Googlebot-Image ---
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Disallow: /favicon_optimized.webp  # למנוע סריקת favicon
+
+# --- הנחיות עבור Googlebot-Video ---
+User-agent: Googlebot-Video
+Crawl-delay: 1
 Allow: /
-User-agent: AdsBot-Google
-Allow: /
+Allow: /[a-z]{2}/
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור Bingbot (Bing, Cortana) ---
 User-agent: Bingbot
+Crawl-delay: 2
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור Yandex (Yandex, Alice) ---
+User-agent: Yandex
+Crawl-delay: 3
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang&session_id
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור Baiduspider (סין) ---
+User-agent: Baiduspider
+Crawl-delay: 3
+Allow: /zh/        # עדיפות לסינית
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+# --- הנחיות עבור Sogou (סין) ---
+User-agent: Sogou
+Crawl-delay: 4
+Allow: /zh/
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+# --- הנחיות עבור Applebot (Siri, Apple) ---
+User-agent: Applebot
+Crawl-delay: 2
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור Amazonbot (Alexa, Amazon) ---
+User-agent: Amazonbot
+Crawl-delay: 3
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור Naverbot (יפן/קוריאה) ---
+User-agent: Naverbot
+Crawl-delay: 3
+Allow: /ja/        # עדיפות ליפנית
+Allow: /ko/        # עדיפות לקוריאנית
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור SeznamBot (צ'כיה) ---
+User-agent: SeznamBot
+Crawl-delay: 3
+Allow: /cs/        # עדיפות לצ'כית
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור Qwantify (Qwant, אירופה) ---
+User-agent: Qwantify
+Crawl-delay: 4
+Allow: /fr/        # עדיפות לצרפתית
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור DuckDuckGoBot (גלובלי) ---
+User-agent: DuckDuckGoBot
+Crawl-delay: 2
 Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
+# --- הנחיות עבור JioSphere (הודו) ---
+User-agent: JioSphere
+Crawl-delay: 3
+Allow: /hi/        # עדיפות להינדי
+Allow: /blog/
+Allow: /article/
+Clean-param: lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הנחיות עבור סורקי בינה מלאכותית שיחתיים ---
+User-agent: Grok
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: openai-crawler
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: cohere-ai
+User-agent: PerplexityBot
+User-agent: CCBot
+User-agent: youbot
+User-agent: phindbot
+User-agent: GeminiBot  # Google AI
+Crawl-delay: 4
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/      # תמציות שיחתיות
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /test/
+Disallow: /staging/
+
+# --- הנחיות עבור סורקי רשתות חברתיות ---
+User-agent: FacebookBot
+User-agent: Twitterbot
+User-agent: redditbot
+User-agent: TikTokBot  # רשתות חברתיות מתפתחות
+Crawl-delay: 2
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/      # תצוגות מקדימות ברשתות
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- חסימת סורקים לא רצויים ---
+User-agent: MJ12bot
+User-agent: AhrefsBot
+User-agent: PetalBot
+User-agent: DotBot
 Disallow: /
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+# --- אישור SemrushBot לביצוע בדיקות SEO ---
+User-agent: SemrushBot
+Crawl-delay: 5
+Allow: /
+Allow: /[a-z]{2}/
+Allow: /blog/
+Allow: /article/
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.gif$
+Clean-param: utm_source&utm_medium&utm_campaign&lang
+Disallow: /csp-report-endpoint/
+Disallow: /contact/
+Disallow: /privacy/
+Disallow: /checkout/
+
+# --- הגנה מפני סורקים לא מזוהים ---
+User-agent: *
+Disallow: /  # חסימה כברירת מחדל אלא אם מאושר במפורש
+
+# --- אופטימיזציה לסריקה ---
+Crawl-delay: 1
+Request-rate: 1/4  # 1 בקשה כל 4 שניות לסריקה מהירה
+
+# --- מפת אתר ---
+Sitemap: https://clairvoyancemedium.github.io/HarazahQuick.github.io/sitemap-index.xml
